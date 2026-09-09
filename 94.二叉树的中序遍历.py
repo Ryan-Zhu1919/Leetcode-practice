@@ -13,15 +13,34 @@ class TreeNode:
         self.right = right
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        res = []
-        def dfs(root):
-            if not root:
-                return
-            dfs(root.left)
-            res.append(root.val)
-            dfs(root.right)
-        dfs(root)
-        res = list(res)
+        # 递归法
+        # res = []
+        # def dfs(root):
+        #     if not root:
+        #         return
+        #     dfs(root.left)
+        #     res.append(root.val)
+        #     dfs(root.right)
+        # dfs(root)
+        # res = list(res)
+        # return res
+
+        # 迭代法
+        res, stack = [], []
+        if root:
+            stack.append(root)
+        while stack:
+            node = stack.pop()
+            if node:
+                if node.right:
+                    stack.append(node.right)
+                stack.append(node)
+                stack.append(None)
+                if node.left:
+                    stack.append(node.left)
+            else:
+                node = stack.pop()
+                res.append(node.val)
         return res
 # @lc code=end
 
