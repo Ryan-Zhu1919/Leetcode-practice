@@ -13,15 +13,35 @@ class TreeNode:
         self.right = right
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        # 递归法
+        # res = []
+        # def dfs(root):
+        #     if not root:
+        #         return
+        #     dfs(root.left)
+        #     dfs(root.right)
+        #     res.append(root.val)
+        # dfs(root)
+        # res = list(res)
+        # return res
+
+        # 迭代法
         res = []
-        def dfs(root):
-            if not root:
-                return
-            dfs(root.left)
-            dfs(root.right)
-            res.append(root.val)
-        dfs(root)
-        res = list(res)
+        stack = []
+        if root:
+            stack.append(root)
+        while stack:
+            node = stack.pop()
+            if node:
+                stack.append(node)
+                stack.append(None)
+                if node.right:
+                    stack.append(node.right)
+                if node.left:
+                    stack.append(node.left)
+            else:
+                node = stack.pop()
+                res.append(node.val)
         return res
 # @lc code=end
 
