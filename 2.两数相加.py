@@ -3,7 +3,7 @@
 #
 # [2] 两数相加
 #
-
+from typing import Optional
 # @lc code=start
 # Definition for singly-linked list.
 # class ListNode:
@@ -23,7 +23,8 @@ class Solution:
         s = s1 + s2
         head = ListNode(0)
         cur = head
-        for c in str(s)[::-1]:
+        res = str(s)
+        for c in res[::-1]:
             cur.next = ListNode(int(c))
             cur = cur.next
         return head.next
