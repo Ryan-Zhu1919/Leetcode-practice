@@ -14,7 +14,8 @@ class Solution:
             if len(path) == k:
                 res.append(path[:])
                 return
-            for i in range(startindex, n + 1):
+            # for i in range(startindex, n + 1):
+            for i in range(startindex, n - (k - len(path)) + 2):#剪枝优化
                 path.append(i)
                 self.backtracking(n, k, i + 1, path, res)
                 path.pop()
