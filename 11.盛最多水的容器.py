@@ -3,13 +3,12 @@
 #
 # [11] 盛最多水的容器
 #
-
+from typing import List
 # @lc code=start
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         ans = 0
-        left = 0
-        right = len(height) - 1
+        left, right = 0, len(height) - 1
         while left < right:
             s = (right - left) * min(height[left], height[right])
             ans = max(ans, s)
