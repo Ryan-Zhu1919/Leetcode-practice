@@ -7,15 +7,24 @@ from collections import Counter
 # @lc code=start
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        ans = 0
-        cnt = Counter()
-        left = 0
+        # ans = 0
+        # cnt = Counter()
+        # left = 0
+        # for right, c in enumerate(s):
+        #     cnt[c] += 1
+        #     while cnt[c] > 1:
+        #         cnt[s[left]] -= 1
+        #         left += 1
+        #     ans = max(ans, right - left + 1)
+        # return ans
+        seen = set()
+        ans, left = 0, 0
         for right, c in enumerate(s):
-            cnt[c] += 1
-            while cnt[c] > 1:
-                cnt[s[left]] -= 1
+            while c in seen:
+                seen.remove(s[left])
                 left += 1
+            seen.add(c)
             ans = max(ans, right - left + 1)
-        return ans
+        return ans   
 # @lc code=end
 
