@@ -3,7 +3,7 @@
 #
 # [704] 二分查找
 #
-
+from typing import List
 # @lc code=start
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
