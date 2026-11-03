@@ -12,6 +12,7 @@ class ListNode:
         self.next = next
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        # 暴力
         # head = ListNode(0)
         # cur = head
         # while list1 and list2:
@@ -28,7 +29,7 @@ class Solution:
         #     cur.next = list2
         # return head.next
 
-        #递归法
+        # 递归法
         if not list1:
             return list2
         if not list2:
