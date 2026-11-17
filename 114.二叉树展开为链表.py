@@ -16,14 +16,16 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
+        self.head = None
+        self.dfs(root)
+
+    def dfs(self, root):
         if root is None:
             return
-        self.flatten(root.right)
-        self.flatten(root.left)
+        self.dfs(root.right)
+        self.dfs(root.left)
         root.left = None
         root.right = self.head
         self.head = root
-        
-    head = None
 # @lc code=end
 
